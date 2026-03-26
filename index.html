@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!-- V1: Clean Minimal | AI Website Factory | GitHub→Vercel -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ak Glamour Unisex Salon | Kanpur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2A9D8F;
+      --accent: #E9C46A;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #218c7f;
+    }
+    .btn-secondary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-secondary:hover {
+      background: #d9b45b;
+    }
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 1000;
+      transition: box-shadow .3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      font-weight: 500;
+      color: var(--text);
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width .3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+    }
+    .hero {
+      position: relative;
+      background: url("https://images.unsplash.com/photo-1511974035430-5de47d3b95da?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: #fff;
+      padding: 6rem 0 4rem;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-inner {
+      max-width: 680px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .stats {
+      display: flex;
+      gap: 3rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    .stat span {
+      font-size: .9rem;
+      opacity: .85;
+    }
+    .section {
+      padding: 4rem 0;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .section-header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      transition: transform .3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+    .service-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: #000;
+      padding: .25rem .5rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .service-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+    .service-card p {
+      color: var(--muted);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .about-content p {
+      margin-bottom: 1.5rem;
+      color: var(--muted);
+    }
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .about-stat {
+      text-align: center;
+    }
+    .about-stat i {
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: .5rem;
+    }
+    .about-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .about-stat span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .testimonials-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .testimonial-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+    .stars {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .testimonial-card p {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial-card .name {
+      font-weight: 600;
+    }
+    .testimonial-card .role {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .gallery-grid img {
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform .3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #218c7f 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      margin-bottom: 2rem;
+      opacity: .9;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .contact-card h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+    .contact-card p {
+      color: var(--muted);
+    }
+    .map iframe {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-brand .logo {
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+    }
+    .footer-brand p {
+      color: var(--muted);
+    }
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .footer-bottom {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .header-cta .btn {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+      }
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+      .cta-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo">Ak Glamour</a>
+        <nav>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-cta">
+          <a href="https://wa.me/916387686399" target="_blank" class="btn btn-primary">WhatsApp</a>
+          <div class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner reveal">
+        <h1>Unisex Salon Excellence</h1>
+        <p>Your Partner in Business Success</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/916387686399" target="_blank" class="btn btn-secondary">WhatsApp</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>35</strong><span>Happy Reviews</span></div>
+          <div class="stat"><strong>4.8/5</strong><span>Average Rating</span></div>
+          <div class="stat"><strong>10+</strong><span>Years of Experience</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Services</h2>
+        <p>Discover our complete range of beauty and wellness services designed to bring out your best.</p>
+      </div>
+      <div class="grid services-grid">
+        <div class="service-card reveal">
+          <span class="badge">Featured</span>
+          <i class="fa-solid fa-user-check"></i>
+          <h3>Consultation</h3>
+          <p>Personalized style consultations to help you choose the perfect look.</p>
+        </div>
+        <div class="service-card reveal">
+          <i class="fa-solid fa-box-open"></i>
+          <h3>Product Sales</h3>
+          <p>Premium hair and skin care products available for purchase.</p>
+        </div>
+        <div class="service-card reveal">
+          <i class="fa-solid fa-headset"></i>
+          <h3>Customer Support</h3>
+          <p>Dedicated support for appointment scheduling and after‑care queries.</p>
+        </div>
+        <div class="service-card reveal">
+          <i class="fa-solid fa-chalkboard-teacher"></i>
+          <h3>Training Sessions</h3>
+          <p>Professional grooming workshops for aspiring stylists.</p>
+        </div>
+        <div class="service-card reveal">
+          <i class="fa-solid fa-wrench"></i>
+          <h3>Maintenance</h3>
+          <p>Regular hair and scalp maintenance plans to keep you looking fresh.</p>
+        </div>
+        <div class="service-card reveal">
+          <i class="fa-solid fa-puzzle-piece"></i>
+          <h3>Custom Solutions</h3>
+          <p>Tailor‑made beauty packages that fit your unique needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section" style="background:var(--surface);">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content reveal">
+          <h3>About Us</h3>
+          <p>At Ak Glamour Unisex Salon we believe everyone deserves to look and feel their best. With over a decade of experience, we offer a welcoming space and professional services for all genders.</p>
+          <p>Our team stays up to date with the latest trends and techniques, ensuring you get the style you want with results that last.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <i class="fa-solid fa-star"></i>
+              <strong data-count="35">35</strong>
+              <span>Reviews</span>
+            </div>
+            <div class="about-stat">
+              <i class="fa-solid fa-thumbs-up"></i>
+              <strong>4.8/5</strong>
+              <span>Rating</span>
+            </div>
+            <div class="about-stat">
+              <i class="fa-solid fa-users"></i>
+              <strong data-count="500">500+</strong>
+              <span>Clients Served</span>
+            </div>
+            <div class="about-stat">
+              <i class="fa-solid fa-calendar"></i>
+              <strong data-count="10">10+</strong>
+              <span>Years in Business</span>
+            </div>
+          </div>
+          <a href="https://wa.me/916387686399" target="_blank" class="btn btn-primary">Book via WhatsApp</a>
+        </div>
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1559599072-9d518d3860c2?auto=format&fit=crop&w=900&q=80" alt="Salon interior">
+        </div>
+      </div
